@@ -17,8 +17,8 @@ RSpec.describe User, type: :model do
   end
 
   it 'should return post count as one' do
-    post = Post.create(title: 'hello', text: 'hello world test', author_id: user.id)
-    expect(user.reload.posts.size).to eq(1)  # Added "reload" to ensure the latest data is used
+    Post.create(title: 'hello', text: 'hello world test', author_id: user.id)
+    expect(user.reload.posts.size).to eq(1) # Added "reload" to ensure the latest data is used
   end
 
   it 'should be invalid on non-integer post counter' do

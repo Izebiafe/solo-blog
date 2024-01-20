@@ -26,4 +26,8 @@ RSpec.describe Like, type: :model do
     like.post.likes_count = 'dd'
     expect(like.post).to_not be_valid
   end
+  it 'should be invalid if likes_count is negative' do
+    post.likes_count = -1
+    expect(post).to_not be_valid
+  end
 end
