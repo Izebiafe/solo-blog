@@ -1,8 +1,5 @@
 class LikesController < ApplicationController
-    def new 
+  def new; end
 
-    end
-    def create
-
-    end
+  def create; end
 end
