@@ -25,7 +25,7 @@ RSpec.describe Comment, type: :model do
     expect(comment.post.id).to eq(post.id)
   end
 
-  it 'should be invalid on negative comment counter' do
+  it 'should be invalid on negative comment counter.' do
     comment.post.comments_count = -1
     expect(comment.post).to_not be_valid
   end
@@ -33,5 +33,10 @@ RSpec.describe Comment, type: :model do
   it 'should be invalid on non-integer comment counter' do
     comment.post.comments_count = 'test'
     expect(comment.post).to_not be_valid
+  end
+
+  it 'should be invalid if comments_count is negative' do
+    post.comments_count = -1
+    expect(post).to_not be_valid
   end
 end
