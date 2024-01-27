@@ -1,0 +1,27 @@
+<section class="mb-5">
+  <div class="card bg-light">
+    <div class="card-body">
+    <!-- Comment form-->
+        <a href="<%= user_path(@user) %>">
+            <button class="btn btn-primary mb-4">Back</button>
+        </a>
+        <%= form_for([@user, @post, @post.comments.new], url: user_post_comments_path(@user, @post)) do |form| %>
+          <div class="mb-3">
+            <%= form.text_area :text, class: "form-control", placeholder: "Enter your comment here" %>
+          </div>
+          <div class="actions">
+            <%= form.submit "Add", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+        <% if flash[:success].present? %>
+          <div class="alert alert-success my-3">
+            <%= flash[:success] %>
+          </div>
+        <% elsif flash[:error].present? %>
+          <div class="alert alert-danger">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</section>

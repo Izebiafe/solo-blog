@@ -1,0 +1,12 @@
+<div class="card my-4">
+    <div class="card-header">
+        <a href="/users/<%=user.id%>/posts/<%=post.id%>"><h4># <%= post.title%></h4></a>
+    </div>
+    <div class="card-body"><%=post.text%></div>
+    <div class="media-info">
+        <ul>
+            <li><a href="#">Comments: <%=post.comments_count%></a></li>
+            <li><a href="#">Likes: <%=post.likes_count%></a></li>
+        </ul>
+    </div>
+</div>

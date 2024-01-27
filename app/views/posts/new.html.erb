@@ -1,0 +1,20 @@
+<section class="mb-5">
+    <div class="card bg-light">
+        <div class="card-body">
+            <a href="<%= user_path(@user) %>">
+                <button class="btn btn-primary mb-4">Back</button>
+            </a>
+            <!-- Posts form-->
+            <%= form_with  model: @post, url: user_posts_path(user_id: @user.id) do |form| %>
+                <div class="mb-3">
+                    <%= form.text_field :title, class: 'form-control', placeholder: "Enter your post Title here" %>
+                    <br/>
+                    <%= form.text_area :text, class: "form-control", placeholder: "Enter your post Title here" %>
+                </div>
+                <div class="actions">
+                    <%= form.submit 'Create Post', class: 'submit-btn' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>
