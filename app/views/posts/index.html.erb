@@ -1,107 +1,54 @@
-<section class="my-bio bg-primary bg-gradient">
-  <div class="container">
-    <div class="row">
-      <%= render partial: 'user', locals: { user: @user } %>
-    </div>
-
-    <% @posts.each do |post| %>
-      <div class="card my-4 bg-light">
-        <div class="card-header-component bg-info">
+<section class="my-bio bg-secondary bg-gradient">
+    <div class="container">
+        <div class="row">
+            <%= render partial: 'user', locals: { user: @user } %>
+        </div>
         <% @posts.each do |post| %>
-            <div class="card my-4 bg-light">
-                <div class="card-header-component bg-info">
-                    <h4 class="text-white"><%= post.author.name %></h4>
+            <div class="card my-4">
+                <div class="card-header">
+                    <h4># <%= link_to post.title, user_post_path(@user, post) %></h4>
                 </div>
-                <div class="card-body-component">
-                    <p class="mt-2"><%= truncate(post.text, length: 200, omission: '...') %></p>
-                </div>
+                <div class="card-body"><p class="mt-2"><%= truncate(post.text, length: 200, omission: '...') %></p></div>
                 <div class="media-info">
                     <ul>
-                        <li><a class="message-successful" href="#">Comments: <%= post.comments_count %></a></li>
-                        <li><a class="message-warning" href="#">Likes: <%= post.likes_count %></a></li>
+                        <li><a href="#">Comments: <%=post.comments_count%></a></li>
+                        <li><a href="#">Likes: <%=post.likes_count%></a></li>
                     </ul>
                 </div>
-
                 <div class="accordion">
-                    <div class="accordion-item-component">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button bg-primary text-white" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Comments
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-                            <div class="card-body-component">
+                            <div class="card-body">
                                 <!-- Single comment-->
-                                <% if post.recent_comment.count > 0 %>
+                                <%= link_to "Add a comment", new_user_post_comment_path(post_id: post.id, user_id: @user.id), class: "btn btn-primary"%>
+                                <%if post.recent_comment.count > 0%>
                                     <% post.recent_comment.each do |comment| %>
                                         <div class="d-flex mb-4">
                                             <div class="flex-shrink-0"><img class="rounded-circle"
-                                                                                                        src="<%= comment.user.photo %>" width="50" height="50" alt="..." />
-                                            </div>
+                                                    src="<%=@user.photo%>" width="50" height="50" alt="..." /></div>
                                             <div class="ms-3">
-                                                <div class="fw-bold text-primary"><%= comment.user.name %></div>
-                                                <p class="text-dark"><%= comment.text %></p>
+                                                <div class="fw-bold"><%=@user.name%></div>
+                                                <p><%=comment.text%></p>
                                             </div>
                                         </div>
-                                    <% end %>
-                                <% else %>
-                                    <h4 class='noComments text-muted'>Be the first to comment</h4>
-                                <% end %>
+                                    <%end%>
+                                <%else%>
+                                    <h4 class='noComments'>Be the first to comment</h4>
+                                <%end%>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         <% end %>
+        <div class="text-center">
+            <a href="/users/1/posts"><button class="btn btn-success" type="button">Pagination</button></a>
         </div>
-        <div class="card-body-component">
-          <p class="mt-2"><%= truncate(post.text, length: 200, omission: '...') %></p>
-        </div>
-        <div class="media-info">
-          <ul>
-            <li><a class="message-successful" href="#">Comments: <%= post.comments_count %></a></li>
-            <li><a class="message-warning" href="#">Likes: <%= post.likes_count %></a></li>
-          </ul>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-item-component">
-            <h2 class="accordion-header">
-              <button class="accordion-button bg-primary text-white" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Comments
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-              <div class="card-body-component">
-                <!-- Single comment-->
-                <% if post.recent_comment.count > 0 %>
-                  <% post.recent_comment.each do |comment| %>
-                    <div class="d-flex mb-4">
-                      <div class="flex-shrink-0"><img class="rounded-circle"
-                                                    src="<%= comment.user.photo %>" width="50" height="50" alt="..." />
-                      </div>
-                      <div class="ms-3">
-                        <div class="fw-bold text-primary"><%= comment.user.name %></div>
-                        <p class="text-dark"><%= comment.text %></p>
-                      </div>
-                    </div>
-                  <% end %>
-                <% else %>
-                  <h4 class='noComments text-muted'>Be the first to comment</h4>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
-    <div class="text-center">
-      <%= link_to user_posts_path(@user) do %>
-        <button class="btn btn-info" type="button">Pagination</button>
-      <% end %>
     </div>
-  </div>
 </section>

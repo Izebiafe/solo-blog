@@ -8,7 +8,7 @@
   padding-bottom: 35px;
 }
 
-.media.b-media .media-body-component h5 {
+.media.blog-media .media-body h5 {
   transition: color 0.3s ease;
   margin-bottom: 15px;
 }
@@ -38,7 +38,7 @@
   background-color: #f5f5f6;
 }
 
-.media.b-media {
+.media.blog-media {
   margin-top: 30px;
   position: relative;
   display: block;
@@ -59,7 +59,7 @@
 }
 
 @media (min-width: 992px) {
-  .media.b-media {
+  .media.blog-media {
     display: inline-flex;
     width: 100%;
   }
@@ -76,7 +76,7 @@
   margin-right: 32px;
 }
 
-.media.b-media .circle {
+.media.blog-media .circle {
   width: 75px;
   height: 75px;
   border-radius: 50%;
@@ -93,7 +93,7 @@
   transition: background-color 0.3s ease;
 }
 
-.media-body-component a {
+.media-body a {
   text-decoration: none;
 }
 
@@ -101,7 +101,7 @@
   text-decoration: none;
 }
 
-.media.b-media .circle .day {
+.media.blog-media .circle .day {
   color: #fff;
   transition: color 0.25s ease;
   font-weight: 500;
@@ -110,18 +110,18 @@
   margin-top: 12px;
 }
 
-.media.b-media .circle .month {
+.media.blog-media .circle .month {
   text-transform: uppercase;
   font-size: 14px;
 }
 
-.media.b-media > a {
+.media.blog-media > a {
   position: relative;
   display: block;
 }
 
 @media (min-width: 992px) {
-  .media.b-media > a {
+  .media.blog-media > a {
     display: table-cell;
     vertical-align: top;
     min-width: 200px;
@@ -129,12 +129,12 @@
 }
 
 @media (min-width: 1200px) {
-  .media.b-media > a {
+  .media.blog-media > a {
     min-width: 230px;
   }
 }
 
-.media.b-media > a::before {
+.media.blog-media > a::before {
   position: absolute;
   content: '';
   top: 15px;
@@ -147,25 +147,25 @@
   background: rgba(12, 198, 82, 0.7);
 }
 
-.media.b-media > a img {
+.media.blog-media > a img {
   width: 100%;
 }
 
-.media.b-media:hover > a::before {
+.media.blog-media:hover > a::before {
   opacity: 1;
   transform: scale(1);
 }
 
-.media.b-media:hover .circle {
+.media.blog-media:hover .circle {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-.media.b-media:hover .circle .day,
-.media.b-media:hover .circle .month {
+.media.blog-media:hover .circle .day,
+.media.blog-media:hover .circle .month {
   color: #222;
 }
 
-.media.b-media .media-body-component {
+.media.blog-media .media-body {
   border: 1px solid #efeff3;
   padding: 30px 30px 10px;
   font-size: 14px;
@@ -174,17 +174,17 @@
   width: 100%;
 }
 
-.media.b-media:hover .media-body-componenth5 {
+.media.blog-media:hover .media-body h5 {
   color: #0cc652;
 }
 
-.media.b-media:hover .media-body-componenta.post-link {
+.media.blog-media:hover .media-body a.post-link {
   color: #0cc652;
   text-decoration: none;
 }
 
 @media (min-width: 992px) {
-  .media.b-media .media-body-component {
+  .media.blog-media .media-body {
     padding: 15px 20px 10px;
     border-top: 1px solid #efeff3;
     border-left: none;
@@ -195,29 +195,29 @@
 }
 
 @media (min-width: 1200px) {
-  .media.b-media .media-body-component {
+  .media.blog-media .media-body {
     padding: 30px 20px 10px;
   }
 }
 
 @media (min-width: 992px) {
-  .media.b-media .media-body-componenth5 {
+  .media.blog-media .media-body h5 {
     font-size: 15px;
   }
 }
 
-.media.b-media .media-body-component ul {
+.media.blog-media .media-body ul {
   position: relative;
   padding: 10px 0 0;
 }
 
-.media.b-media .media-body-component ul li {
+.media.blog-media .media-body ul li {
   display: flex;
   justify-content: flex-end;
   position: relative;
 }
 
-.media.b-media .media-body-component ul li::before {
+.media.blog-media .media-body ul li::before {
   position: absolute;
   content: '';
   top: 5px;
@@ -227,11 +227,11 @@
   background: #eeeef2;
 }
 
-.media.b-media .media-body-component ul li:first-child::before {
+.media.blog-media .media-body ul li:first-child::before {
   visibility: hidden;
 }
 
-.media.b-media .media-body-component ul::before {
+.media.blog-media .media-body ul::before {
   position: absolute;
   content: '';
   top: 0;
