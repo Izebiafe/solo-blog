@@ -1,1 +1,52 @@
-<h1>this is going to show the user post page</h1>
+<section class="my-bio bg-secondary bg-gradient">
+    <div class="container">
+            <div class="card my-4">
+                <div class="card-header post-heading">
+                    <h4># <%=@post.title%></h4> <h4>Comments: <%=@post.comments_count%> Likes: <%=@post.likes_count%></h4>
+                </div>
+                <div class="card-body"> <p><%=@post.text%></p></div>
+               <div class="media-info card-body">
+                    <%= render 'application/likes', post: @post, user: @user %>
+                    <ul>
+                       <li>Comments: <%=@post.comments_count%></li>
+                        <li>Likes: <%=@post.likes_count%></li>
+                    </ul>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-item-component">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Comments
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                            <div class="card-body">
+                                <!-- Single comment-->
+                                <%= render template: 'comments/new', post: @post, user: @user, class: "mb-3"%>
+                                <br/>
+                                <br/>
+                                <%if @post.recent_comment.count > 0%>
+                                    <% @post.recent_comment.each do |comment| %>
+                                        <div class="d-flex mb-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle"
+                                                    src="<%=@user.photo%>" width="50" height="50" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold"><%=@user.name%></div>
+                                                <p><%=comment.text%></p>
+                                            </div>
+                                        </div>
+                                    <%end%>
+                                <%else%>
+                                    <h4 class='noComments'>Be the first to comment</h4>
+                                <%end%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="text-center">
+            <a href="/users/<%=@post.author_id%>/posts"><button class="btn btn-success" type="button">Back to Post</button></a>
+        </div>
+    </div>
+</section>

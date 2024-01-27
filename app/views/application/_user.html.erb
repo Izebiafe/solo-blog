@@ -1,0 +1,23 @@
+<div class="col-md-12">
+	<div class="media b-media">
+		<a href="#"><img class="d-flex" src="<%= user.photo%>"
+				alt="<%= user.photo%>" height="256" width="256"></a>
+		<div class="circle">
+			<h6 class="day">Last Post</h6>
+			<span class="month">4 sep</span>
+		</div>
+		<div class="media-body-component">
+			<a href="/users/<%=user.id%>">
+				<h1 class="mt-4 text-left display-4">
+					<%= user.name%>
+				</h1>
+			</a>
+			<ul>
+				<li>
+					<h3>Number of Posts: <%=user.posts_count%>
+					</h3>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
