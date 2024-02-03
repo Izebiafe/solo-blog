@@ -1,19 +1,22 @@
-<section class="my-blog bg-secondary bg-gradient">
-    <div class="container">
-		<!-- section title -->
-		<div class="row justify-content-md-center">
-			<div class="col-xl-5 col-lg-6 col-md-8">
-				<div class="section-title text-center title-ex1">
-					<h2>Users</h2>
-					<p>Click the User to view Posts</p>
-				</div>
-			</div>
-		</div>
-		<!-- section title ends -->
-		<div class="row">
-			<% @users.each do |user| %>
-            	<%= render partial: 'user', locals: { user: user } %>
-			<% end %>
-		</div>    
-	</div>
+<section id="body-content" class="container">  
+   <%= render partial: 'shared/signout' %>
+    
+    <%= link_to "Create New Post", new_user_post_path(current_user.id), class: "btn btn-primary" %>
+    
+    <% @users.each do |user| %>
+        <div class="row mt-4">
+            <div class="col-lg-2">
+                <%# <%= image_tag("default.jpg", alt: "Default", style: "width: 70%;") %> 
+                <img id="user-image" src="<%= user.photo %>" alt="User Photo" style="width: 70%;">
+
+            </div>
+            <div class="col-lg-10 border border-dark d-flex align-items-center">
+                <div class="user-lists w-100">
+                    <h2 class="text-dark"><%= link_to user.name, user_path(user) %></h2>
+                    <p class="d-flex justify-content-end">Number Of posts <%= user.posts_counter %></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
 </section>

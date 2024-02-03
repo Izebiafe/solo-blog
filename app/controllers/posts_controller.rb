@@ -1,37 +1,35 @@
 class PostsController < ApplicationController
-  before_action :find_user, only: %i[index show new create]
-
+  before_action :authenticate_user!
   def index
-    @posts = @user.posts.includes(:comments)
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(comments: :author)
   end
 
   def show
+    logger.debug(params)
+    @user = User.find(params[:user_id])
     @post = @user.posts.includes(:comments).find(params[:id])
     @comments = @post.comments
   end
 
   def new
-    @post = @user.posts.new
+    @user = current_user
+    @post = Post.new
   end
 
   def create
-    @post = @user.posts.build(post_params.merge(author: current_user))
-
+    @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to user_posts_path(id: current_user.id), notice: 'Post created successfully!'
+      redirect_to user_posts_path, notice: 'Post was successfully created.'
     else
-      flash.now[:alert] = 'Cannot create a new post'
+      flash.now[:alert] = 'Something Wrong, Cannot create a new post'
       render :new
     end
   end
 
   private
 
-  def find_user
-    @user = User.find(params[:user_id])
-  end
-
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :user_id)
   end
 end
