@@ -4,6 +4,8 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'pg'
 
+gem 'will_paginate'
+
 ruby '3.1.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -50,10 +52,10 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'capybara'
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 5.0'
-  gem 'webdrivers'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -71,7 +73,6 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 5.0'
+  gem 'selenium-webdriver', '~> 4.17'
+  gem 'shoulda-matchers'
 end
