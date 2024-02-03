@@ -1,0 +1,12 @@
+<div class="row mt-4">
+<%= render partial: 'shared/signout' %>
+    <div class="col-lg-2">
+        <img id="user-image" src="<%= user.photo %>" alt="User Photo" style="width: 70%;">
+    </div>
+    <div class="col-lg-10 border border-dark d-flex align-items-center">
+        <div class="user-lists w-100">
+            <h2 class="text-dark"><%= @user.name %></h2>
+            <p class="d-flex justify-content-end">Number Of posts <%= @user.posts_counter %></p>
+        </div>
+    </div>
+</div>
